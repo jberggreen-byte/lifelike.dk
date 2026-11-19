@@ -321,3 +321,37 @@ h4{font-family:"Source Sans Pro",sans-serif,"google";font-weight:normal;font-sty
 a{font-family:"Source Sans Pro",sans-serif,"google";font-weight:normal;font-style:normal}body .j-shop-addtocard-response a.j-shop-addtocard-response--backward:link,
 body .j-shop-addtocard-response a.j-shop-addtocard-response--backward:visited{opacity:0.7}.j-blog .j-blog-meta .j-blog-headline,
 .j-blogSelection .j-blog-headline{font-weight:normal;font-style:normal}.datetime{}.j-rss .j-rss-feed-title{font-weight:normal;font-style:normal}
+
+
+/* ll-nav-overflow-fix: 2025/2026 year items made the Blog submenu taller than the
+   viewport. On the front page the bar sits on the bottom edge, so the menu must
+   open upward. On inner pages cap the height and allow scrolling so OpEd stays reachable.
+   Mobile panel used overflow:hidden and clipped the last items. */
+@media (min-width:1170px){
+  .jtpl-navigation__inner .j-nav-level-1{
+    max-height:calc(100vh - 540px);
+    overflow-x:hidden;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    scrollbar-width:thin;
+    scrollbar-color:#666 #222;
+  }
+  .cc-indexpage .jtpl-navigation__inner .j-nav-level-1{
+    top:auto;
+    bottom:100%;
+    max-height:calc(100vh - 50px);
+  }
+  .jtpl-navigation--fixed-top .jtpl-navigation__inner .j-nav-level-1{
+    top:100%;
+    bottom:auto;
+    max-height:calc(100vh - 50px);
+  }
+}
+.jtpl-navigation__checkbox:checked+.jtpl-main .jtpl-mobile-navigation__inner{
+  overflow-x:hidden;
+  overflow-y:auto;
+  max-height:calc(100vh - 240px);
+  max-height:calc(100dvh - 240px);
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+}
